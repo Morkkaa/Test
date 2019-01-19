@@ -1,0 +1,17 @@
+<div class="card mb-4">
+    <div class="card-header">
+        {{message.date}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{message.text}}</h5>
+        <p class="card-text">real_answer: {{message.real_answer}}</p>
+        <p class="card-text">user_answer: {{message.user_answer}}</p>
+        <a href="{{message.get_absolute_url}}" class="btn btn-dark">Read</a>
+    </div>
+    <div class="card-footer text-muted">
+        Tag:
+        {% for tag in message.tags.all %}
+            <a href="{{tag.get_absolute_url}}">{{tag.text}}</a>
+        {% endfor %}
+    </div>
+</div>

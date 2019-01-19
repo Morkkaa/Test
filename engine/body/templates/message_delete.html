@@ -1,0 +1,18 @@
+{% extends 'Base.html'%}
+
+{% block title%}
+    Message Delete - "{{message.text|title}}" - {{block.super}}
+{% endblock%}
+
+{% block content%}
+    <form action="{{message.get_delete_url}}" method="post">
+
+        {% csrf_token %}
+
+        <h3>Are you sure you want delete <b>{{message.text|title}}</b>message?</h3>
+        <a href="{{ message.get_absolute_url }}">Cancel</a>
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+{% endblock%}
+

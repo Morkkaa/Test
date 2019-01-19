@@ -1,0 +1,27 @@
+{% extends 'Base.html'%}
+
+{% block title%}
+    Answer -{{block.super}}
+{% endblock%}
+
+{% block content%}
+    <form action="{% url 'user_answer_url' slug=user_answer.slug %}" method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                {% if field.errors %}
+                    <div class="alert alert-danger">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+
+                {{ field.label }}
+                {{ field }}
+
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-dark">Редактировать</button>
+    </form>
+{% endblock%}

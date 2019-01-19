@@ -1,0 +1,26 @@
+{% extends 'Base.html'%}
+
+{% block title%}
+    Edit Message -{{block.super}}
+{% endblock%}
+
+{% block content%}
+    <form class="" action="{{message.get_update_url}}" method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                {% if field.errors %}
+                    <div class="alert alert-danger">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+
+                {{ field.label }}
+                {{ field }}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-dark">Update message</button>
+    </form>
+{% endblock%}

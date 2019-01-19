@@ -1,0 +1,12 @@
+{% extends 'Base.html'%}
+
+{% block content%}
+    <h1 class="mb-5">
+        Сообщение с тегом {{tag.text|title}}
+    </h1>
+    {% for message in tag.messages.all %}
+        {% include 'include/card_template.html' %}
+
+    {% endfor %}
+{% endblock %}
+

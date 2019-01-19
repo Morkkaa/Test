@@ -1,0 +1,6 @@
+{% extends 'Base.html' %}}
+{% block content%}
+    {% for message in messages %}
+        {% include 'include/card_template.html' %}
+    {% endfor%}
+{% endblock %}

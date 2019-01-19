@@ -1,0 +1,31 @@
+{% extends 'Base.html'%}
+
+
+{% block content%}
+    <h1 class="mb-5">
+        {{message.text}}
+    </h1>
+    <h5 class="mb-5">
+        real_answer: {{message.real_answer}}
+    </h5>
+
+    {% if message.user_answer != None %}
+
+    <h5 class="mb-5">
+        user_answer: {{message.user_answer}}
+    </h5>
+
+    <a href="{% url 'user_answer_url' slug=message.slug %}" class="btn btn-light">Редактировать</a>
+
+    {% elif message.user_answer == None%}
+
+    <a href="{% url 'user_answer_url' slug=message.slug %}" class="btn btn-light">Ответить</a>
+
+
+
+    {% endif %}
+
+
+
+{% endblock %}
+
